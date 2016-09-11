@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.platform.appointments.appointment.AppointmentEdit"
+        datasource="appointmentDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.platform.appointments.appointment">
+    <dsContext>
+        <datasource id="appointmentDs"
+                    class="com.company.platform.appointments.Appointment"
+                    view="appointment-view">
+            <collectionDatasource id="reminderDs"
+                                  property="reminder"/>
+            <collectionDatasource id="attachementsDs"
+                                  property="attachements"/>
+        </datasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="appointmentDs">
+            <column width="250px">
+                <field id="starts"/>
+                <field id="title"/>
+            </column>
+            <column width="250px">
+                <field id="ends"/>
+                <field id="category"/>
+                <field id="description"/>
+            </column>
+        </fieldGroup>
+        <hbox spacing="true"
+              width="100%">
+            <groupBox id="reminderBox"
+                      caption="msg://com.company.platform.appointments/Appointment.reminder">
+                <table id="reminderTable"
+                       height="200px"
+                       width="100%">
+                    <actions>
+                        <action id="create"/>
+                        <action id="edit"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="period"/>
+                        <column id="periodUnit"/>
+                        <column id="type"/>
+                    </columns>
+                    <rows datasource="reminderDs"/>
+                    <buttonsPanel>
+                        <button action="reminderTable.create"/>
+                        <button action="reminderTable.edit"/>
+                        <button action="reminderTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <groupBox id="attachementsBox"
+                      caption="msg://com.company.platform.appointments/Appointment.attachements">
+                <table id="attachementsTable"
+                       height="200px"
+                       width="100%">
+                    <actions>
+                        <action id="add"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="createDate"/>
+                    </columns>
+                    <rows datasource="attachementsDs"/>
+                    <buttonsPanel>
+                        <button action="attachementsTable.add"/>
+                        <button action="attachementsTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+        </hbox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

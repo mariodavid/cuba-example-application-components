@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.platform.appointments.appointmentcategory.AppointmentCategoryBrowse"
+        focusComponent="appointmentCategoriesTable"
+        lookupComponent="appointmentCategoriesTable"
+        messagesPack="com.company.platform.appointments.appointmentcategory">
+    <dsContext>
+        <collectionDatasource id="appointmentCategoriesDs"
+                              class="com.company.platform.appointments.AppointmentCategory"
+                              view="_local">
+            <query>
+                <![CDATA[select e from appointments$AppointmentCategory e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="appointmentCategoriesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="appointmentCategoriesTable"
+                datasource="appointmentCategoriesDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="appointmentCategoriesTable"
+               width="100%">
+            <actions>
+                <action id="create"
+                        openType="DIALOG"/>
+                <action id="edit"
+                        openType="DIALOG"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="appointmentCategoriesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="appointmentCategoriesTable.create"/>
+                <button id="editBtn"
+                        action="appointmentCategoriesTable.edit"/>
+                <button id="removeBtn"
+                        action="appointmentCategoriesTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editCaption"
+        class="com.company.platform.projectmanagement.project.ProjectEdit"
+        datasource="projectDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.platform.projectmanagement.project">
+    <dsContext>
+        <datasource id="projectDs"
+                    class="com.company.platform.projectmanagement.Project"
+                    view="project-view">
+            <collectionDatasource id="appointmentsDs"
+                                  property="appointments"/>
+        </datasource>
+    </dsContext>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="projectDs">
+            <column>
+                <field id="name"/>
+                <field id="customer"
+                       width="250px"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="appointmentsBox"
+                  caption="msg://com.company.platform.projectmanagement/Project.appointments">
+            <table id="appointmentsTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="starts"/>
+                    <column id="title"/>
+                    <column id="ends"/>
+                </columns>
+                <rows datasource="appointmentsDs"/>
+                <buttonsPanel>
+                    <button action="appointmentsTable.add"/>
+                    <button action="appointmentsTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

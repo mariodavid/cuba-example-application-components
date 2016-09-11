@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.platform.projectmanagement.customer.CustomerBrowse"
+        focusComponent="customersTable"
+        lookupComponent="customersTable"
+        messagesPack="com.company.platform.projectmanagement.customer">
+    <dsContext>
+        <collectionDatasource id="customersDs"
+                              class="com.company.platform.projectmanagement.Customer"
+                              view="_local">
+            <query>
+                <![CDATA[select e from pm$Customer e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="customersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="customersTable"
+                datasource="customersDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="customersTable"
+               width="100%"
+               multiselect="true"
+        >
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="sayHelloAction"
+                        caption="Say Hello"
+                        invoke="sayHello"
+                        trackSelection="true"
+                />
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="firstName"/>
+                <column id="birthday"/>
+            </columns>
+            <rows datasource="customersDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="customersTable.create"/>
+                <button id="editBtn"
+                        action="customersTable.edit"/>
+                <button id="removeBtn"
+                        action="customersTable.remove"/>
+                <button id="sayHelloBtn" action="customersTable.sayHelloAction"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

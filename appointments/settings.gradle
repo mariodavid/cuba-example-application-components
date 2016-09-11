@@ -1,0 +1,6 @@
+rootProject.name = 'appointments'
+include(':company-global', ':company-core', ':company-gui', ':company-web')
+project(':company-global').projectDir = new File(settingsDir, 'modules/global')
+project(':company-core').projectDir = new File(settingsDir, 'modules/core')
+project(':company-gui').projectDir = new File(settingsDir, 'modules/gui')
+project(':company-web').projectDir = new File(settingsDir, 'modules/web')

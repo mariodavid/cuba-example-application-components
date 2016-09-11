@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.platform.projectmanagement.project.ProjectBrowse"
+        focusComponent="projectsTable"
+        lookupComponent="projectsTable"
+        messagesPack="com.company.platform.projectmanagement.project">
+    <dsContext>
+        <collectionDatasource id="projectsDs"
+                              class="com.company.platform.projectmanagement.Project"
+                              view="project-view">
+            <query>
+                <![CDATA[select e from pm$Project e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <layout expand="projectsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="projectsTable"
+                datasource="projectsDs">
+            <properties include=".*"/>
+        </filter>
+        <table id="projectsTable"
+               width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="customer"/>
+            </columns>
+            <rows datasource="projectsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="projectsTable.create"/>
+                <button id="editBtn"
+                        action="projectsTable.edit"/>
+                <button id="removeBtn"
+                        action="projectsTable.remove"/>
+            </buttonsPanel>
+        </table>
+    </layout>
+</window>

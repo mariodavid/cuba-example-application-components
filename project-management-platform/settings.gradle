@@ -1,0 +1,6 @@
+rootProject.name = 'project-management-platform'
+include(':company-platform-global', ':company-platform-core', ':company-platform-gui', ':company-platform-web')
+project(':company-platform-global').projectDir = new File(settingsDir, 'modules/global')
+project(':company-platform-core').projectDir = new File(settingsDir, 'modules/core')
+project(':company-platform-gui').projectDir = new File(settingsDir, 'modules/gui')
+project(':company-platform-web').projectDir = new File(settingsDir, 'modules/web')

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.platform.appointments.appointment.AppointmentBrowse"
+        focusComponent="appointmentsTable"
+        lookupComponent="appointmentsTable"
+        messagesPack="com.company.platform.appointments.appointment">
+    <dsContext>
+        <groupDatasource id="appointmentsDs"
+                         class="com.company.platform.appointments.Appointment"
+                         view="appointment-view">
+            <query>
+                <![CDATA[select e from appointments$Appointment e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <layout expand="appointmentsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="appointmentsTable"
+                datasource="appointmentsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="appointmentsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="title"/>
+                <column id="starts"/>
+                <column id="ends"/>
+                <column id="category"/>
+            </columns>
+            <rows datasource="appointmentsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="appointmentsTable.create"/>
+                <button id="editBtn"
+                        action="appointmentsTable.edit"/>
+                <button id="removeBtn"
+                        action="appointmentsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

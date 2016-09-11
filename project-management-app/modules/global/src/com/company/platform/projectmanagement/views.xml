@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.company.platform.projectmanagement.Project"
+          extends="_local"
+          name="project-view">
+        <property name="customer"
+                  view="_minimal"/>
+        <property name="appointments"
+                  view="_minimal"/>
+    </view>
+</views>

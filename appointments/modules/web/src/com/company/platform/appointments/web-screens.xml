@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="com/company/platform/appointments/screens.xml"/>
+    <screen id="appointments$AppointmentCategory.edit"
+            template="com/company/platform/appointments/appointmentcategory/appointment-category-edit.xml"/>
+    <screen id="appointments$AppointmentCategory.browse"
+            template="com/company/platform/appointments/appointmentcategory/appointment-category-browse.xml"/>
+    <screen id="appointments$AppointmentReminder.edit"
+            template="com/company/platform/appointments/appointmentreminder/appointment-reminder-edit.xml"/>
+    <screen id="appointments$Appointment.edit"
+            template="com/company/platform/appointments/appointment/appointment-edit.xml"/>
+    <screen id="appointments$Appointment.browse"
+            template="com/company/platform/appointments/appointment/appointment-browse.xml"/>
+</screen-config>
