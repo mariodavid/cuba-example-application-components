@@ -1,4 +1,8 @@
-package com.company.platform;
+/*
+ * TODO Copyright
+ */
+
+package com.company.platform.main;
 
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Column;

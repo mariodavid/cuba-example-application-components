@@ -4,7 +4,7 @@ buildscript {
     repositories {
         mavenLocal()
         maven {
-            url 'https://repo.cuba-platform.com/content/groups/work'
+            url 'http://repository.haulmont.com:8587/nexus/content/groups/work'
             credentials {
                 username(rootProject.hasProperty('repoUser') ? rootProject['repoUser'] : 'cuba')
                 password(rootProject.hasProperty('repoPass') ? rootProject['repoPass'] : 'cuba123')
@@ -17,7 +17,7 @@ buildscript {
 
         classpath "com.haulmont.cuba:cuba-global:$cubaVersion"
         classpath "com.company.platform.appointments:company-global:0.1-SNAPSHOT"
-        classpath "com.company.platform:company-platform-global:0.1-SNAPSHOT"
+        classpath "com.company.platform.main:company-platform-global:0.1-SNAPSHOT"
 
         
     }

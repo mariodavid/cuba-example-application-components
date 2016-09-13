@@ -33,7 +33,7 @@ apply(plugin: 'cuba')
 
 cuba {
     artifact {
-        group = 'com.company.platform'
+        group = 'com.company.platform.main'
         version = '0.1'
         isSnapshot = true
     }

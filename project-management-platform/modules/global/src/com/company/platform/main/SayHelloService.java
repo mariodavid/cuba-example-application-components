@@ -1,4 +1,8 @@
-package com.company.platform;
+/*
+ * TODO Copyright
+ */
+
+package com.company.platform.main;
 
 
 public interface SayHelloService {

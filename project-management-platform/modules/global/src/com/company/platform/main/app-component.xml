@@ -6,11 +6,11 @@
         <artifact appJar="true"
                   name="company-platform-global"/>
         <property name="cuba.persistenceConfig"
-                  value="+com/company/platform/persistence.xml"/>
+                  value="+com/company/platform/main/persistence.xml"/>
         <property name="cuba.metadataConfig"
-                  value="+com/company/platform/metadata.xml"/>
+                  value="+com/company/platform/main/metadata.xml"/>
         <property name="cuba.viewsConfig"
-                  value="+com/company/platform/views.xml"/>
+                  value="+com/company/platform/main/views.xml"/>
     </module>
     <module blocks="core"
             dependsOn="global"
@@ -22,9 +22,9 @@
                   ext="zip"
                   name="company-platform-core"/>
         <property name="cuba.springContextConfig"
-                  value="+com/company/platform/spring.xml"/>
+                  value="+com/company/platform/main/spring.xml"/>
         <property name="cuba.mainMessagePack"
-                  value="+com.company.platform.core"/>
+                  value="+com.company.platform.core.main"/>
     </module>
     <module blocks="web,desktop"
             dependsOn="global"
@@ -42,16 +42,16 @@
                   ext="zip"
                   name="company-platform-web"/>
         <property name="cuba.springContextConfig"
-                  value="+com/company/platform/web-spring.xml"/>
+                  value="+com/company/platform/main/web-spring.xml"/>
         <property name="cuba.dispatcherSpringContextConfig"
-                  value="+com/company/platform/web-dispatcher-spring.xml"/>
+                  value="+com/company/platform/main/web-dispatcher-spring.xml"/>
         <property name="cuba.windowConfig"
-                  value="+com/company/platform/web-screens.xml"/>
+                  value="+com/company/platform/main/web-screens.xml"/>
         <property name="cuba.menuConfig"
-                  value="+com/company/platform/web-menu.xml"/>
+                  value="+com/company/platform/main/web-menu.xml"/>
         <property name="cuba.permissionConfig"
-                  value="+com/company/platform/web-permissions.xml"/>
+                  value="+com/company/platform/main/web-permissions.xml"/>
         <property name="cuba.mainMessagePack"
-                  value="+com.company.platform.gui com.company.platform.web"/>
+                  value="+com.company.platform.main.gui com.company.platform.main.web"/>
     </module>
 </app-component>
