@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ TODO Copyright
+  -->
+
 <screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+
+    <include file="com/company/platform/main/screens.xml"/>
 
 </screen-config>

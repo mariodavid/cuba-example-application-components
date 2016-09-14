@@ -17,7 +17,7 @@ buildscript {
 
         classpath "com.haulmont.cuba:cuba-global:$cubaVersion"
         classpath "com.company.platform.appointments:company-global:0.1-SNAPSHOT"
-        classpath "com.company.platform:company-platform-global:0.1-SNAPSHOT"
+        classpath "com.company.platform.main:company-platform-global:0.1-SNAPSHOT"
 
         
     }

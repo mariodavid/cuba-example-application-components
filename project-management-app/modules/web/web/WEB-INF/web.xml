@@ -19,7 +19,7 @@
     <!--Application components-->
     <context-param>
         <param-name>appComponents</param-name>
-        <param-value>com.haulmont.cuba com.company.platform.appointments com.company.platform</param-value>
+        <param-value>com.haulmont.cuba com.company.platform.appointments com.company.platform.main</param-value>
     </context-param>
     <listener>
         <listener-class>com.vaadin.server.communication.JSR356WebsocketInitializer</listener-class>
