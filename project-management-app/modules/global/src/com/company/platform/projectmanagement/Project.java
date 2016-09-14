@@ -13,7 +13,6 @@ import com.haulmont.cuba.core.global.DeletePolicy;
 import java.util.Set;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import com.company.platform.NamedEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
 
 @NamePattern("%s|name")

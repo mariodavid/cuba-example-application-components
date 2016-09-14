@@ -6,18 +6,14 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
-import com.company.platform.NamedEntity;
+import com.company.platform.main.NamedEntity;
 
-@NamePattern("%s %s|firstName,name")
+@NamePattern("%s |firstName")
 @Table(name = "PM_CUSTOMER")
 @Entity(name = "pm$Customer")
-public class Customer extends StandardEntity {
+public class Customer extends NamedEntity {
     private static final long serialVersionUID = 2177962844431617273L;
-
-    @Column(name = "NAME", nullable = false)
-    protected String name;
 
     @Column(name = "FIRST_NAME")
     protected String firstName;
@@ -25,14 +21,6 @@ public class Customer extends StandardEntity {
     @Temporal(TemporalType.DATE)
     @Column(name = "BIRTHDAY")
     protected Date birthday;
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
 
 
     public void setFirstName(String firstName) {

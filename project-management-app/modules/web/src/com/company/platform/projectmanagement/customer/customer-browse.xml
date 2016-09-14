@@ -22,9 +22,8 @@
             <properties include=".*"/>
         </filter>
         <table id="customersTable"
-               width="100%"
                multiselect="true"
-        >
+               width="100%">
             <actions>
                 <action id="create"/>
                 <action id="edit"/>
@@ -32,8 +31,7 @@
                 <action id="sayHelloAction"
                         caption="Say Hello"
                         invoke="sayHello"
-                        trackSelection="true"
-                />
+                        trackSelection="true"/>
             </actions>
             <columns>
                 <column id="name"/>
@@ -50,7 +48,8 @@
                         action="customersTable.edit"/>
                 <button id="removeBtn"
                         action="customersTable.remove"/>
-                <button id="sayHelloBtn" action="customersTable.sayHelloAction"/>
+                <button id="sayHelloBtn"
+                        action="customersTable.sayHelloAction"/>
             </buttonsPanel>
         </table>
     </layout>

@@ -15,7 +15,7 @@
         <property name="remoteServices">
             <map>
                 <entry key="pmp_SayHelloService"
-                       value="com.company.platform.SayHelloService"/>
+                       value="com.company.platform.main.SayHelloService"/>
             </map>
         </property>
     </bean>

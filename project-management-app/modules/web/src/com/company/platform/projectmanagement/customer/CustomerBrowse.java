@@ -1,6 +1,6 @@
 package com.company.platform.projectmanagement.customer;
 
-import com.company.platform.SayHelloService;
+import com.company.platform.main.SayHelloService;
 import com.company.platform.projectmanagement.Customer;
 import com.haulmont.cuba.gui.components.AbstractLookup;
 import com.haulmont.cuba.gui.components.Component;

@@ -8,8 +8,9 @@ create table PM_CUSTOMER (
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
-    --
     NAME varchar(255) not null,
+    DESCRIPTION varchar(255),
+    --
     FIRST_NAME varchar(255),
     BIRTHDAY date,
     --
