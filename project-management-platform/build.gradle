@@ -1,6 +1,6 @@
 
 buildscript {
-    ext.cubaVersion = '6.3.0.RC1'
+    ext.cubaVersion = '6.10.7'
     repositories {
         maven {
             url 'https://repo.cuba-platform.com/content/groups/work'
@@ -14,8 +14,6 @@ buildscript {
     dependencies {
         classpath "com.haulmont.gradle:cuba-plugin:$cubaVersion"
 
-        classpath "com.haulmont.cuba:cuba-global:$cubaVersion"
-
         
     }
 }
@@ -25,7 +23,7 @@ def coreModule = project(':company-platform-core')
 def guiModule = project(':company-platform-gui')
 def webModule = project(':company-platform-web')
 
-def servletApi = 'org.apache.tomcat:tomcat-servlet-api:8.0.26'
+def servletApi = 'javax.servlet:javax.servlet-api:3.1.0'
 
 
 apply(plugin: 'idea')
@@ -34,13 +32,18 @@ apply(plugin: 'cuba')
 cuba {
     artifact {
         group = 'com.company.platform.main'
-        version = '0.1'
+        version = "0.2"
         isSnapshot = true
     }
     tomcat {
         dir = "$project.rootDir/build/tomcat"
     }
 }
+
+dependencies {
+    appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
+}
+
 
 def hsql = 'org.hsqldb:hsqldb:2.2.9'
 
@@ -65,7 +68,9 @@ configure([globalModule, coreModule, guiModule, webModule]) {
 }
 
 configure(globalModule) {
-    task enhance(type: CubaEnhancing)
+    entitiesEnhancing {
+        main { enabled = true }
+    }
     
     
     jar {
@@ -92,11 +97,13 @@ configure(coreModule) {
 
     }
 
-    task cleanConf(description: 'Cleans up conf directory') << {
-        def dir = new File(cuba.tomcat.dir, '/conf/company-platform-core')
-        if (dir.isDirectory()) {
-            ant.delete(includeemptydirs: true) {
-                fileset(dir: dir, includes: '**/*', excludes: 'local.app.properties')
+    task cleanConf(description: 'Cleans up conf directory') {
+        doLast {
+            def dir = new File(cuba.tomcat.dir, '/conf/company-platform-core')
+            if (dir.isDirectory()) {
+                ant.delete(includeemptydirs: true) {
+                    fileset(dir: dir, includes: '**/*', excludes: 'local.app.properties')
+                }
             }
         }
     }
@@ -167,11 +174,13 @@ configure(webModule) {
     }
     deployConf.dependsOn clearMessagesCache
 
-    task cleanConf(description: 'Cleans up conf directory') << {
-        def dir = new File(cuba.tomcat.dir, '/conf/company-platform')
-        if (dir.isDirectory()) {
-            ant.delete(includeemptydirs: true) {
-                fileset(dir: dir, includes: '**/*', excludes: 'local.app.properties')
+    task cleanConf(description: 'Cleans up conf directory') {
+        doLast {
+            def dir = new File(cuba.tomcat.dir, '/conf/company-platform')
+            if (dir.isDirectory()) {
+                ant.delete(includeemptydirs: true) {
+                    fileset(dir: dir, includes: '**/*', excludes: 'local.app.properties')
+                }
             }
         }
     }
@@ -191,17 +200,20 @@ task undeploy(type: Delete, dependsOn: ':company-platform-web:cleanConf') {
     delete("$cuba.tomcat.dir/webapps/company-platform")
 }
 
-task restart(dependsOn: ['stop', ':company-platform-core:deploy', ':company-platform-web:deploy'], description: 'Redeploys applications and restarts local Tomcat') << {
-    ant.waitfor(maxwait: 6, maxwaitunit: 'second', checkevery: 2, checkeveryunit: 'second') {
-        not {
-            socket(server: 'localhost', port: '8787')
+task restart(dependsOn: ['stop', ':company-platform-core:deploy', ':company-platform-web:deploy'],
+        description: 'Redeploys applications and restarts local Tomcat') {
+    doLast {
+        ant.waitfor(maxwait: 6, maxwaitunit: 'second', checkevery: 2, checkeveryunit: 'second') {
+            not {
+                socket(server: 'localhost', port: '8787')
+            }
         }
+        start.execute()
     }
-    start.execute()
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.13'
+    gradleVersion = '4.3.1'
 }
 
 apply from: 'extra.gradle'

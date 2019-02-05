@@ -1,8 +1,8 @@
 -- begin PM_PROJECT
-alter table PM_PROJECT add constraint FK_PM_PROJECT_CUSTOMER_ID foreign key (CUSTOMER_ID) references PM_CUSTOMER(ID)^
+alter table PM_PROJECT add constraint FK_PM_PROJECT_CUSTOMER foreign key (CUSTOMER_ID) references PM_CUSTOMER(ID)^
 create index IDX_PM_PROJECT_CUSTOMER on PM_PROJECT (CUSTOMER_ID)^
 -- end PM_PROJECT
 -- begin PM_PROJECT_APPOINTMENT_LINK
-alter table PM_PROJECT_APPOINTMENT_LINK add constraint FK_PPAL_PROJECT foreign key (PROJECT_ID) references PM_PROJECT(ID)^
-alter table PM_PROJECT_APPOINTMENT_LINK add constraint FK_PPAL_APPOINTMENT foreign key (APPOINTMENT_ID) references APPOINTMENTS_APPOINTMENT(ID)^
+alter table PM_PROJECT_APPOINTMENT_LINK add constraint FK_PROAPP_PROJECT foreign key (PROJECT_ID) references PM_PROJECT(ID)^
+alter table PM_PROJECT_APPOINTMENT_LINK add constraint FK_PROAPP_APPOINTMENT foreign key (APPOINTMENT_ID) references APPOINTMENTS_APPOINTMENT(ID)^
 -- end PM_PROJECT_APPOINTMENT_LINK
